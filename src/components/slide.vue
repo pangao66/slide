@@ -1,16 +1,12 @@
 <template>
   <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
     <div class="slide-img">
-      <a>
-        <transition name="slide-trans">
-          <img v-if="isShow" :src="slides[nowIndex].src">
-        </transition>
-        <transition name="slide-trans-old">
-          <img v-if="!isShow" :src="slides[nowIndex].src">
+      <a v-for="(item ,index) in slides">
+        <transition name="fade">
+          <img :src="item.src" alt="" v-show="index===nowIndex">
         </transition>
       </a>
     </div>
-    <!--<h2>{{ slides[nowIndex].title }}</h2>-->
     <ul class="slide-pages">
       <li v-for="(item, index) in slides"
           @click="goto(index)"
@@ -41,8 +37,7 @@
     },
     data () {
       return {
-        nowIndex: 0,
-        isShow: true
+        nowIndex: 0
       }
     },
     computed: {
@@ -63,11 +58,7 @@
     },
     methods: {
       goto (index) {
-        this.isShow = false
-        setTimeout(() => {
-          this.isShow = true
-          this.nowIndex = index
-        }, 10)
+        this.nowIndex = index
       },
       runInv () {
         this.invId = setInterval(() => {
@@ -145,26 +136,20 @@
       background-position: -42px 50%;
     }
   }
-  .slide-trans-enter-active {
-    transition: all 1s;
-  }
-  .slide-trans-enter {
-    /*transform: translateX(900px);*/
-    opacity: 1;
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
   }
 
-  .slide-trans-old-leave-active {
-    transition: all 1s;
-   // transform: translateX(-900px);
-    opacity: 0;
+  .fade-enter, .fade-leave-active {
+    opacity: 0
   }
+
   .slide-show {
     position: relative;
     overflow: hidden;
   }
-  .slide-img {
-    width: 100%;
-  }
+
   .slide-img img {
     position: absolute;
   }
