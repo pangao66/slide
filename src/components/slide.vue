@@ -16,7 +16,6 @@
       </li>
     </ul>
     <div class="control-wrapper">
-      4555
       <a class="prev" @click="goto(prevIndex)"></a>
       <a class="next" @click="goto(nextIndex)"></a>
     </div>
@@ -75,7 +74,7 @@
   }
 </script>
 
-<style scoped lang="scss" rel="stylesheet/scss">
+<style  lang="scss" rel="stylesheet/scss" scoped>
   .slide-pages {
     position: absolute;
     bottom: 20px;
