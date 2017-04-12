@@ -3,13 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+// import slide from 'vue-slide-mini'
+// Vue.use(slide)
+// console.log(slide)
+/* eslint-disable no-new */
+Vue.prototype.$bus = new Vue()
 Vue.config.productionTip = false
-
+// Vue.use(slider)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: {App}
 })

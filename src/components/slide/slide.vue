@@ -2,9 +2,9 @@
   <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
     <transition-group tag="ul" class='slide-ul' :name="name">
       <li v-for="(item , index ) in slides" :key="index" v-show="index===nowIndex">
-        <a href="">
+        <!--<a href="">-->
           <img :src="item.src" alt="">
-        </a>
+        <!--</a>-->
       </li>
     </transition-group>
     <ul class="slide-pages">
@@ -160,12 +160,12 @@
   }
 
   .list-enter-active {
-    transition: all 1s ease;
+    transition: all 0.5s ease;
     transform: translateX(0)
   }
 
   .list-leave-active {
-    transition: all 1s ease;
+    transition: all 0.5s ease;
     transform: translateX(-100%);
   }
 

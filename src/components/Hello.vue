@@ -1,10 +1,17 @@
 <template>
   <div>
     <slide :slides="slides" :inv="inv" :style="styleObject" :name="transitionName"></slide>
+    <div @click.stop.prevent="pre">
+      445
+    </div>
+    <div>
+      445
+    </div>
   </div>
 </template>
 <script>
-  import slide from '@/components/slide.vue'
+  import slide from '@/components/slide/slide.vue'
+  //  import slide from 'vue-slide-mini'
   export default{
     components: {slide},
     data () {
@@ -32,6 +39,16 @@
           height: '460px'
         },
         transitionName: 'list'
+      }
+    },
+    mounted () {
+      this.$bus.$on('chufa', function () {
+        console.log('aa')
+      })
+    },
+    methods: {
+      pre () {
+        console.log('bb')
       }
     }
   }
