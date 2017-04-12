@@ -1,12 +1,12 @@
 <template>
   <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
-    <div class="slide-img">
-      <a v-for="(item ,index) in slides">
-        <transition name="fade">
-          <img :src="item.src" alt="" v-show="index===nowIndex">
-        </transition>
-      </a>
-    </div>
+    <transition-group tag="ul" class='slide-ul' :name="name">
+      <li v-for="(item , index ) in slides" :key="index" v-show="index===nowIndex">
+        <a href="">
+          <img :src="item.src" alt="">
+        </a>
+      </li>
+    </transition-group>
     <ul class="slide-pages">
       <li v-for="(item, index) in slides"
           @click="goto(index)"
@@ -32,6 +32,10 @@
       inv: {
         type: Number,
         default: 1000
+      },
+      name: {
+        type: String,
+        default: 'fade'
       }
     },
     data () {
@@ -74,7 +78,7 @@
   }
 </script>
 
-<style  lang="scss" rel="stylesheet/scss" scoped>
+<style lang="scss" rel="stylesheet/scss" scoped>
   .slide-pages {
     position: absolute;
     bottom: 20px;
@@ -136,6 +140,43 @@
     }
   }
 
+  .slide-show {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide-ul {
+    width: 100%;
+    height: 100%;
+    li {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .list-enter-active {
+    transition: all 1s ease;
+    transform: translateX(0)
+  }
+
+  .list-leave-active {
+    transition: all 1s ease;
+    transform: translateX(-100%);
+  }
+
+  .list-enter {
+    transform: translateX(100%);
+  }
+
+  .list-leave {
+    transform: translateX(0);
+  }
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s
   }
@@ -143,14 +184,4 @@
   .fade-enter, .fade-leave-active {
     opacity: 0
   }
-
-  .slide-show {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .slide-img img {
-    position: absolute;
-  }
-
 </style>

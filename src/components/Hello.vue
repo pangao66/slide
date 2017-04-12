@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slide :slides="slides" :inv="inv" :style="styleObject"></slide>
+    <slide :slides="slides" :inv="inv" :style="styleObject" :name="transitionName"></slide>
   </div>
 </template>
 <script>
@@ -26,11 +26,12 @@
             src: 'http://i3.mifile.cn/a4/xmad_14913755624659_gRtNH.jpg'
           }
         ],
-        inv: 2000,
+        inv: 3000,
         styleObject: {
           width: '1226px',
           height: '460px'
-        }
+        },
+        transitionName: 'list'
       }
     }
   }
