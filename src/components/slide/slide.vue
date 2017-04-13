@@ -2,9 +2,9 @@
   <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
     <transition-group tag="ul" class='slide-ul' :name="name">
       <li v-for="(item , index ) in slides" :key="index" v-show="index===nowIndex">
-        <!--<a href="">-->
+        <a :href="item.href" :target="target">
           <img :src="item.src" alt="">
-        <!--</a>-->
+        </a>
       </li>
     </transition-group>
     <ul class="slide-pages">
@@ -35,7 +35,11 @@
       },
       name: {
         type: String,
-        default: 'fade'
+        default: 'move'
+      },
+      target: {
+        type: String,
+        default: '_blank'
       }
     },
     data () {
@@ -159,21 +163,21 @@
     }
   }
 
-  .list-enter-active {
+  .move-enter-active {
     transition: all 0.5s ease;
     transform: translateX(0)
   }
 
-  .list-leave-active {
+  .move-leave-active {
     transition: all 0.5s ease;
     transform: translateX(-100%);
   }
 
-  .list-enter {
+  .move-enter {
     transform: translateX(100%);
   }
 
-  .list-leave {
+  .move-leave {
     transform: translateX(0);
   }
 
