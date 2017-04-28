@@ -1,6 +1,7 @@
 <template>
   <div>
-    <slide :slides="slides" :inv="inv" :style="styleObject" :name="transitionName" :target="target"></slide>
+    <slide :slides="slides" :inv="inv" :style="styleObject" :name="transitionName1" :target="target"></slide>
+    <slide :slides="slides" :inv="inv" :style="styleObject" :name="transitionName2" :target="target"></slide>
   </div>
 </template>
 <script>
@@ -36,7 +37,8 @@
           width: '1226px',
           height: '460px'
         },
-        transitionName: 'move',
+        transitionName1: 'move',
+        transitionName2: 'fade',
         target: '_blank'
       }
     }
