@@ -49,3 +49,4 @@ data () {
       }
     }
 ```
+预览地址:http://github.noob6.com/slide/
